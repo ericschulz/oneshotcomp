@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Eric Schulz">
+    <meta charset="utf-8">
+
+
+    <title>Space Traders</title>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> 
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script> 
+    <script src='https://cdn.firebase.com/js/client/1.1.1/firebase.js'></script>
+    <script src="https://dl.dropboxusercontent.com/u/4213788/d3.min.js" charset="utf-8"></script>
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css">
+    <link href="https://dl.dropboxusercontent.com/u/4213788/bootstrap.css" rel="stylesheet" type="text/css">
+
+ </head>
+     <body>
+ 
+        <div class="container">
+            <div class="row">
+
+                <div id="page1" style="display:block">
+                <h3><font color="blue" FACE="bookman">SPACE TRADERS</font></h3>
+                <p> This study is part of a research project conducted by Pablo León-Villagrá, University of Edinburgh. </p>
+                <p> The study investigates how people reason about combinations of patterns.</p>
+                <p>It takes about 5 minutes on average to complete this study and you will be paid $0.3.</p><br>
+                <button type="button" name="button"; onclick="clickStart('page1', 'page2')"; >Continue</button>
+                <br>
+                </div>
+
+
+                <div id="page2" style="display:none">
+                <h3><font color="blue" FACE="bookman">SPACE TRADERS</font></h3>
+                <p><b>By clicking on the button below, you agree to the following:</b></p>
+                <p>I have read the above information.</p>
+                <p>I understand that I am free to withdraw from the study without penalty if I so wish and I consent to the processing of my personal information for the purposes of this study only and that it will not be used for any other purpose. I understand that such information will be treated as strictly confidential and handled in accordance with the provisions of the Data Protection Act 1998. </p>
+                <p>I understand that the information I have submitted will be published as a report. Confidentiality and anonymity will be maintained and it will not be possible to identify me from any publications. I understand that I am being paid for my assistance in this research.</p>
+                <br>
+                <button type="button" name="button"; onclick="clickStart('page2','page3')"; >Agree</button>
+                <br>
+                </div>
+                
+                <div id="page3" style="display:none">
+                <h1><font color="blue" FACE="bookman">SPACE TRADERS</font></h1>
+                <p><b>Please read the following instructions carefully: </b></p>
+                <br>
+
+                <p>You are a merchant trading plants from different planets. Each plant has different features and the features determine how well the plants sell.
+                  In this experiment, it will be your task to <b>reason about how plants will sell on the intergalactic market</b> depending on their features.
+                </p>
+                <p>To help you make your decision, you will be presented with <b>sales patterns</b>. These sales patterns were collected for plants with particular features on the intergalactic market and <b>show how many plants with that feature were sold on a day.</b></p>
+                <p>You will be presented with these sales patterns and have to reason about how well plants with particular features sell in a total of <b>10 Rounds</b>.</p>
+                <p>Each round is as follows:</p>
+                <ol>
+                  <li>You are presented sales pattern of a plant. This plant is an offspring between two other plants. Therefore, its sales patterns will look like a combination of two features.</li>
+                  <li>You have to reason about how two different patterns might have combined to produce the offspring that you see, i.e. by which rule they combined.</b></li>
+                  <li>4 new sales patterns are shown, these are also all offspring patterns but from different plants.</b>.</li>
+                  <li>Your task is to <b>reason about which off these offsprings was bred by the same method and thereby was created by a similar way of combining features.</b> .</li>
+                </ol>
+                <p>Let's see an example round!</p>
+                <div style="width:500px;margin:0 auto">
+                <button type="button" name="button"; onclick="clickStart('page3','pageexample')"; >Go to example</button>
+                <br>
+                </div>
+                </div>
+
+                <div id="pageexample" style="display:none">
+                <h3><font color="blue" FACE="bookman">SPACE TRADERS</font></h3>
+                  <b><div id="remain1ex">This is a short example that will help you to become an expert plant trader.</div></b>
+                  <button id="next1ex"; type="button" name="button"; onclick="clickSimple('next1ex','firstoffspringex')"; >Show first offspring</button>
+                  <div id="firstoffspringex" style="display:none">
+                  <p>The blue sales pattern is produced by an offspring between two different plants. It shares both of its parents features. Notice how the sales pattern might have resulted by combining two different patterns. This is the MOST important part of being an plant trader, infering by what rules two features have interacted to produce this offspring pattern.</p><br>
+                  <center>
+                  <div id='compex' style="display: block"></div><br>
+                  <button id="next3ex"; type="button" name="button"; onclick="clickSimple('next3ex','secondoffspringex')"; >Show new patterns</button>
+                  </center>
+                  </div>
+                  <div id="secondoffspringex" style="display:none">
+                  <p>The four sales patterns below have been collected from four different plants throughout the galaxy. One of them shows the sales pattern of a plant that is an offspring between two different plants but was breed using the same method as the offspring above. Therefore, it will show a pattern that is the combination of two different patterns that have been combined by the same rules as for the offspring pattern shown above. It is your task to choose one of the patterns below whose patterns were combined in a similar way as the above offspring's patterns were combined.</p><br>
+                  <p>In order to do so, just look at the above offspring's patterns. Try to imagine what kind of two patterns might have produced the sales pattern for this offspring. Afterwards, look at the 4 patterns below and try to assess which of those could have been produced by <b>combining different patterns but using the same rule.</b>Good luck!</p>
+                  <left>
+                  <div id='comp1ex' style="display: inline"></div>
+                  <div id='comp2ex' style="display: inline"></div>
+                  <div id='comp3ex' style="display: inline"></div>
+                  <div id='comp4ex' style="display: inline"></div>
+                  <br>
+                  <button type="button" name="button"; onclick="clickStart('pageexample','page4')" tyle="display: inline"; >Submit and continue with actual trial</button> <br><br>
+                  </left>
+                  </div>
+                  </div>
+
+
+
+                <div id="page4" style="display:none">
+                <h3><font color="blue" FACE="bookman">SPACE TRADERS</font></h3>
+                 <div id="explainshow" style="display:block">
+                  <p> <b>Guidelines:</b></p><br>
+                  <p><b>I.</b> Below you see sales patterns collected from an offspring of two plants.</p>
+                  <p><b>II.</b>Imagine two different plant's patterns have been combined to produce this offspring's plant and try to think about by which rule these two pattern's might have combined the shown pattern.</p>
+                  <p><b>III.</b> Next, you will see 4 different patterns below.</p>
+                  <p><b>IV.</b>It is your task to choose the one you think has been produced by two different parent's patterns, but using the same breeding method.</p>
+                  <p><b>V.</b> Choosing the right pattern on a particular trial means looking at the offsrping pattern above, trying to assess what kind of two patterns this pattern might have been produced and extract the rule by which these two patterns might have interacted. Afterwards, you can assess the 4 patterns below, try to extract their pattern parts and reason about which of these patterns has been produced by the same rule but using different parts. Rules can change from trial to trial!</p>
+
+                  <font color="black">
+                  <button type="button" name="button"; onclick="clickSimple('explainshow','explainhide')"; >Hide guidelines</button>
+                  </div>
+                  <br>
+                  <div id="explainhide" style="display:none">
+                  <button type="button" name="button"; onclick="clickSimple('explainhide','explainshow')"; >Show guidelines</button>
+                  </div>
+                  <br>
+                  <b><div id="remain1">Number of trials left: 10</div></b>
+                  <button id="next1"; type="button" name="button"; onclick="clickSimple('next1','firstoffspring')"; >Show offspring</button>
+                  <div id="firstoffspring" style="display:none">
+                  <center>
+                  <div id='comp' style="display: clock"></div><br>
+                  <button id="next3"; type="button" name="button"; onclick="clickSimple('next3','secondoffspring')"; >Show new patterns</button>
+                  </center>
+                  </div>
+                  <div id="secondoffspring" style="display:none">
+                  <br><br>
+                  <p><b>Given that the offspring's pattern above is the result of combining two patterns, which of the following 4 patterns has been produced by combining two different patterns but using the same rule?</b></p><br>
+                  <div id='comp1' style="display: inline"></div>
+                  <div id='comp2' style="display: inline"></div>
+                  <div id='comp3' style="display: inline"></div>
+                  <div id='comp4' style="display: inline"></div>
+                  <br>
+                  <button type="button" name="button"; onclick="dotrial()" tyle="display: inline"; >Submit choice</button> <br><br>
+                  </div>
+                  </div>
+                
+                <div id="page5" style="display:none">
+                <fieldset>
+                <div style="float:left;width:400px;margin:5px">
+                How old are you?<br>
+                <input id="age1" type="radio" name="age1" value="20" >18-25<br>
+                <input id="age2" type="radio" name="age2" value="30" >26-35<br>
+                <input id="age3" type="radio" name="age3" value="40" >36-50<br>
+                <input id="age4" type="radio" name="age4" value="50" >above 50<br>
+                </div>
+                <div style="float:left;width:400px;margin:5px">
+                What's your gender?<br>
+                <input id="gender1" type="radio" name="gender1" value="0" >Female<br>
+                <input id="gender2" type="radio" name="gender2" value="1" >Male<br>
+                </div>
+                </fieldset>
+                <div style="width:50px;margin:0 auto">
+                <button type="button" name="button"; onclick="senddata()"; >Done</button>
+                </div>
+                </div>
+
+                <div id="page6" style="display:none">
+                <h3>Thank you for participating in our experiment.</h3>
+                <p>Your MTurk codes is: <b>pattern2017</b></p>
+                </div>
+
+
+               
+            </div>
+        </div>
+        <script src="js/oneshot.js" charset="utf-8"></script>
+    </body>
+</html>

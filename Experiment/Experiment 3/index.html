@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Eric Schulz">
+    <meta charset="utf-8">
+
+
+    <title>Space Traders</title>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> 
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script> 
+    <script src='https://cdn.firebase.com/js/client/1.1.1/firebase.js'></script>
+    <script src="https://dl.dropboxusercontent.com/u/4213788/d3.min.js" charset="utf-8"></script>
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css">
+    <link href="https://dl.dropboxusercontent.com/u/4213788/bootstrap.css" rel="stylesheet" type="text/css">
+
+ </head>
+     <body>
+ 
+        <div class="container">
+            <div class="row">
+
+                <div id="page1" style="display:block">
+                <h3><font color="blue" FACE="bookman">SPACE TRADERS</font></h3>
+                <p> This study is part of a research project conducted by Pablo León-Villagrá, University of Edinburgh. </p>
+                <p> The study investigates how people reason about combinations of patterns.</p>
+                <p>It takes about 5 minutes on average to complete this study and you will be paid $0.3.</p><br>
+                <button type="button" name="button"; onclick="clickStart('page1', 'page2')"; >Continue</button>
+                <br>
+                </div>
+
+
+                <div id="page2" style="display:none">
+                <h3><font color="blue" FACE="bookman">SPACE TRADERS</font></h3>
+                <p><b>By clicking on the button below, you agree to the following:</b></p>
+                <p>I have read the above information.</p>
+                <p>I understand that I am free to withdraw from the study without penalty if I so wish and I consent to the processing of my personal information for the purposes of this study only and that it will not be used for any other purpose. I understand that such information will be treated as strictly confidential and handled in accordance with the provisions of the Data Protection Act 1998. </p>
+                <p>I understand that the information I have submitted will be published as a report. Confidentiality and anonymity will be maintained and it will not be possible to identify me from any publications. I understand that I am being paid for my assistance in this research.</p>
+                <br>
+                <button type="button" name="button"; onclick="clickStart('page2','page3')"; >Agree</button>
+                <br>
+                </div>
+                
+                <div id="page3" style="display:none">
+                <h1><font color="blue" FACE="bookman">SPACE TRADERS</font></h1>
+                <p><b>Please read the following instructions carefully: </b></p>
+                <br>
+
+                <p>You are a merchant trading plants from different planets. Each plant has different features and the features determine how well the plants sell.
+                  In this experiment, it will be your task to <b>reason about how plants will sell on the intergalactic market</b> depending on their features.
+                </p>
+                <p>To help you make your decision, you will be presented with <b>sales patterns</b>. These sales patterns were collected for plants with a particular feature on the intergalactic market and <b>show how many plants with that feature were sold on a day.</b></p>
+                <p>You will be presented with these sales patterns and have to reason about how well plants with particular features sell in a total of <b>10 Rounds</b>.</p>
+                <p>Each round is as follows:</p>
+                <ol>
+                  <li>You are presented sales patterns of two plants (<b>Plant A and Plant B</b>) with different features</b>.</li>
+                  <li>Then you are presented the sales pattern for another plant. <b>This plant is an offspring of A and B.</b></li>
+                  <li>Two new sales patterns are shown, one for <b>Plant C</b> and one for <b>Plant D</b>.</li>
+                  <li>Your task is to <b>reason about how an offspring of Plant C and D would sell on the intergalactic market</b> .</li>
+                </ol>
+                <p>Let's see an example round!</p>
+                <div style="width:500px;margin:0 auto">
+                <button type="button" name="button"; onclick="clickStart('page3','pageexample')"; >Go to example</button>
+                <br>
+                </div>
+                </div>
+
+                <div id="pageexample" style="display:none">
+                <h3><font color="blue" FACE="bookman">SPACE TRADERS</font></h3>
+                  <b><div id="remain1ex">This is a short example that will help you to become an expert plant trader.</div></b>
+                  <button id="next1ex"; type="button" name="button"; onclick="clickSimple('next1ex','firstparentsex')"; >Show first plants</button>
+                  <div id="firstparentsex" style="display:none">
+                   <p>You will always see two different patterns first, one is the sales pattern produced by Plant A (with feature A) and one is the sales pattern produced by Plant B (with feature B).
+                    Each sales pattern shows how plants with the feature sell on the intergalactic market. The x-axis marks the time over which a plant was traded and the y-axis shows how many plants were sold.</p>
+                    <p>Below you can see how well Plant A (with feature A) and how well Plant B (with feature B) sold.</p>
+                  <left>
+                  <div id='s1ex' style="display: inline"></div>
+                  <div id='s2ex' style="display: inline"></div>
+                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                  <div id='compex' style="display: none"></div><br>
+
+                  <button id="next2ex"; type="button" name="button"; onclick="clickSimple2('next2ex','firstoffspringex', 'compex')"; >Show pattern produced by their offspring</button>
+                  </left>
+                  </div>
+                  
+                  <div id="firstoffspringex" style="display:none">
+                  <p>The blue sales pattern is produced by an offspring between Plant A and Plant B. It shares both features, feature A and feature B. Notice how the different features interact and try to think about what is typical about this interaction. This is the MOST important part of being an plant trader, infering by what rules features interact on a given trial.</p><br>
+                  <center>
+                  <button id="next3ex"; type="button" name="button"; onclick="clickSimple('next3ex','secondparentsex')"; >Show new patterns</button>
+                  </center>
+                  </div>
+                  
+                  <div id="secondparentsex" style="display:none">
+                  <p>You can see two new sales patterns for two different plants below. The left one shows how well Plant C (with feature C) and the right one shows how well Plant D (with feature D) sold on the intergalactic market. These are two new plants with two new features. They are not related to the first three plants, but grow on the same planet.</p><br>
+                  <left>
+                  <div id='s3ex' style="display: inline"></div>
+                  <div id='s4ex' style="display: inline"></div>
+                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                  <div id='questionex' style="display: none"><input type="image" src="question.png" width="200" height="200"onclick="mymarkex(0)" border="0"></div><br>
+                  <button id="next4ex"; type="button" name="button"; onclick="clickSimple2('next4ex','secondoffspringex', 'questionex')"; >Show offspring patterns</button>
+                  </left>
+                  </div>
+                  
+                  <div id="secondoffspringex" style="display:none">
+                  <p>The four sales patterns below have been collected from four different plants throughout the galaxy. One of them shows the sales pattern of a plant that is the offspring between Plant C and Plant D and therefore has both feature C and feature D. It is your task to choose the sales pattern which you think might have most likely been produced by an offspring between Plant C and Plant D.</p><br>
+                  <p>In order to do so, just look at Plant A and Plant B's sales patterns. Then, closely assess how their patterns combined to produce their offspring's sales pattern. This will tell you how different features combine on the current trial. Now, look at the sales pattern of Plant C and Plant D and try to apply the same rule of combination (the rule that combined Plant A and Plant B to produce their offspring) to the two patterns. This will help you to choose the right pattern. Good luck!</p>
+                  <left>
+                  <div id='comp1ex' style="display: inline"></div>
+                  <div id='comp2ex' style="display: inline"></div>
+                  <div id='comp3ex' style="display: inline"></div>
+                  <div id='comp4ex' style="display: inline"></div>
+                  <br>
+                  <button type="button" name="button"; onclick="clickStart('pageexample','page4')" tyle="display: inline"; >Submit and continue with actual trial</button> <br><br>
+                  </left>
+                  </div>
+                  </div>
+
+
+
+                <div id="page4" style="display:none">
+                <h3><font color="blue" FACE="bookman">SPACE TRADERS</font></h3>
+                 <div id="explainshow" style="display:block">
+                  <p> <b>Guidelines:</b></p><br>
+                  <p><b>I.</b> Below you see sales patterns collected from different plants from the same planet.</p>
+                  <p><b>II.</b> The first two show Plant A and Plant B's patterns. The third one shows their offsprings' sales pattern.</p>
+                  <p><b>III.</b> Next, you will see two new patterns collected from Plant C and Plant D.</p>
+                  <p><b>IV.</b>Below C and D's pattern, there will be 4 different patterns. It is your task to choose the one you think has been produced by Plant C and D's offspring</p>
+                  <p><b>V.</b> Choosing the right pattern on a particular trial means looking at how Plant A and Plant B's features combined to produce their offspring's sales pattern and then apply the same rule to the patterns of Plant C and D. Rules can change from trial to trial!</p>
+
+                  <font color="black">
+                  <button type="button" name="button"; onclick="clickSimple('explainshow','explainhide')"; >Hide guidelines</button>
+                  </div>
+                  <br>
+                  <div id="explainhide" style="display:none">
+                  <button type="button" name="button"; onclick="clickSimple('explainhide','explainshow')"; >Show guidelines</button>
+                  </div>
+                  <br>
+                  <b><div id="remain1">Number of trials left: 10</div></b>
+                  <button id="next1"; type="button" name="button"; onclick="clickSimple('next1','firstparents')"; >Show first pair</button>
+                  <div id="firstparents" style="display:none">
+                  <left>
+                  <br>
+                  <div id='s1' style="display: inline"></div>
+                  <div id='s2' style="display: inline"></div>
+                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                  <div id='comp' style="display: none"></div><br>
+
+                  <button id="next2"; type="button" name="button"; onclick="clickSimple2('next2','firstoffspring','comp')"; >Show pattern of their offspring</button>
+                  </left>
+                  </div>
+                  <div id="firstoffspring" style="display:none">
+                  <button id="next3"; type="button" name="button"; onclick="clickSimple('next3','secondparents')"; >Show second pair</button>
+                  </div>
+                  <div id="secondparents" style="display:none">
+                  <div id='s3' style="display: inline"></div>
+                  <div id='s4' style="display: inline"></div>
+                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                  <div id='question' style="display: none"><input type="image" src="question.png" width="200" height="200" border="0"></div><br>
+
+                  <button id="next4"; type="button" name="button"; onclick="clickSimple2('next4','secondoffspring', 'question')"; >Show offspring patterns</button>
+                  </div>
+                  <div id="secondoffspring" style="display:none">
+                  <br><br>
+                  <p><b>Given how Plant A and B's patterns combined to produce their offspring's pattern, which of the patterns below was produced by Plant C and D's offspring?</b></p><br>
+                  <div id='comp1' style="display: inline"></div>
+                  <div id='comp2' style="display: inline"></div>
+                  <div id='comp3' style="display: inline"></div>
+                  <div id='comp4' style="display: inline"></div>
+                  <br>
+                  <button type="button" name="button"; onclick="dotrial()" tyle="display: inline"; >Submit choice</button> <br><br>
+                  </div>
+                  </div>
+                
+                <div id="page5" style="display:none">
+                <fieldset>
+                <div style="float:left;width:400px;margin:5px">
+                How old are you?<br>
+                <input id="age1" type="radio" name="age1" value="20" >18-25<br>
+                <input id="age2" type="radio" name="age2" value="30" >26-35<br>
+                <input id="age3" type="radio" name="age3" value="40" >36-50<br>
+                <input id="age4" type="radio" name="age4" value="50" >above 50<br>
+                </div>
+                <div style="float:left;width:400px;margin:5px">
+                What's your gender?<br>
+                <input id="gender1" type="radio" name="gender1" value="0" >Female<br>
+                <input id="gender2" type="radio" name="gender2" value="1" >Male<br>
+                </div>
+                </fieldset>
+                <div style="width:50px;margin:0 auto">
+                <button type="button" name="button"; onclick="senddata()"; >Done</button>
+                </div>
+                </div>
+
+                <div id="page6" style="display:none">
+                <h3>Thank you for participating in our experiment.</h3>
+                <p>Your MTurk codes is: <b>pattern2017</b></p>
+                </div>
+
+
+               
+            </div>
+        </div>
+        <script src="js/oneshot.js" charset="utf-8"></script>
+    </body>
+</html>
