@@ -35,8 +35,8 @@ m<-c(mean(d$other), mean(d$correct), mean(d$single)/2, mean(d$single)/2)
 s<-c(se(d$other), se(d$correct), se(d$single), se(d$single))
 
 #plot data frame
-dplot<-data.frame(prop=m, se=s, proposal=c("Alternative\nComposition", "True\n Composition", 
-                                           "Single\n Alternative 1", "Single\n Alternative 2"))
+dplot<-data.frame(prop=m, se=s, proposal=c("Other\nComposition", "True\n Composition", 
+                                           "Single\n Component 1", "Single\n Component 2"))
 
 #limits
 limits <- aes(ymax = prop + se, ymin=prop-se)
@@ -51,9 +51,9 @@ p <- ggplot(dplot, aes(y=prop, x=proposal)) +
   #point size
   geom_point(size=3)+
   #title
-  ggtitle("")+theme_classic() +xlab("\nOption")+ylab("Proportion chosen\n")+
+  ggtitle("Experiment 2: Results")+theme_classic() +xlab("Option")+ylab("Proportion chosen")+
   #change theme
-  theme(text = element_text(size=22, family="serif"))+
+  theme(text = element_text(size=20, family="serif"))+
   theme(panel.background = element_blank(),
         panel.grid.major = element_blank(), 
         panel.grid.minor = element_blank(),
